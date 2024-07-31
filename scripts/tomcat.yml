@@ -1,0 +1,35 @@
+---
+- name: Install Java
+  yum:
+    name: java-1.8.0-openjdk
+    state: present
+
+- name: Create tomcat user
+  user:
+    name: tomcat
+    shell: /bin/false
+
+- name: Download Tomcat
+  get_url:
+    url: "https://downloads.apache.org/tomcat/tomcat-9/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
+    dest: /tmp/apache-tomcat-{{ tomcat_version }}.tar.gz
+
+- name: Extract Tomcat
+  unarchive:
+    src: /tmp/apache-tomcat-{{ tomcat_version }}.tar.gz
+    dest: /opt/
+    remote_src: yes
+
+- name: Create symlink for tomcat
+  file:
+    src: /opt/apache-tomcat-{{ tomcat_version }}
+    dest: /opt/tomcat
+    state: link
+
+- name: Change ownership of the Tomcat directory
+  file:
+    path: /opt/tomcat
+    state: directory
+    owner: tomcat
+    group: tomcat
+    recurse: yes
