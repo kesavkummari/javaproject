@@ -21,7 +21,7 @@ resource "aws_instance" "jenkins" {
   instance_type          = var.instance_type
   key_name               = var.key_name
   subnet_id              = var.subnet_id_1a
-  vpc_security_group_ids = ["sg-077fced5d5205d41f"]
+  vpc_security_group_ids = ["sg-0a3fe1b73a2b3e0d2"]
   iam_instance_profile   = var.iam_instance_profile
   #user_data              = file("/Users/ck/repos/iac-terraform/iac/web.sh")
   user_data = <<-EOF
