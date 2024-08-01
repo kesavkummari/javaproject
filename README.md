@@ -1,6 +1,7 @@
 # javaproject
 To Store Raw Code &amp; To Create CI/CD Pipeline
 
+<<<<<<< HEAD
 
 
 javaproject name of the repo:
@@ -28,3 +29,8 @@ git merge dev
 
 New Developer : 96f0456bcdb39b95724373f3a82c755634463f42
 
+=======
+Build LifeCycles - terraform
+
+terraform init ---> .terraform --> No need to push to online
+>>>>>>> dev
