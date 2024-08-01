@@ -1,5 +1,5 @@
 variable "ami" {
-  default = "ami-053b0d53c279acc90"
+  default = "ami-0a0e5d9c7acc336f1" //Ubuntu 22.04
 }
 
 variable "instance_type" {
@@ -7,16 +7,16 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-  default = "nv_aws"
+  default = "tf-windows"
 }
 
 variable "subnet_id_1a" {
   default = "subnet-0385704f22e343550"
 }
 
-variable "subnet_id_1b" {
-  default = "subnet-0592ebfbf0bb99b29"
-}
+# variable "subnet_id_1b" {
+#   default = "subnet-0592ebfbf0bb99b29"
+# }
 
 variable "iam_instance_profile" {
   default = "8amSSMEC2"
