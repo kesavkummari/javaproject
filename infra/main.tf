@@ -54,6 +54,56 @@ resource "aws_instance" "jenkins" {
   }
 }
 
+
+# Resource
+resource "aws_instance" "sonarqube" {
+  ami                    = var.ami
+  instance_type          = var.sonar_instance_type
+  key_name               = var.key_name
+  subnet_id              = var.subnet_id_1a
+  vpc_security_group_ids = ["sg-0a3fe1b73a2b3e0d2"]
+  iam_instance_profile   = var.iam_instance_profile
+  #user_data              = file("/Users/ck/repos/iac-terraform/iac/web.sh")
+  user_data = <<-EOF
+  #!/bin/bash
+  sudo hostnamectl set-hostname "sonarqube.cloudbinary.io"
+  echo "`hostname -I | awk '{ print $1 }'` `hostname`" >> /etc/hosts
+  sudo apt-get update
+  sudo apt-get install git wget unzip zip curl tree -y
+  sudo apt-get install docker.io -y
+  sudo usermod -aG docker ubuntu
+  sudo chmod 777 /var/run/docker.sock
+  sudo systemctl enable docker
+  sudo systemctl restart docker
+  sudo docker pull sonarqube
+  sudo docker images
+  docker volume create sonarqube-conf
+  docker volume create sonarqube-data
+  docker volume create sonarqube-logs
+  docker volume create sonarqube-extensions
+  docker volume inspect sonarqube-conf
+  docker volume inspect sonarqube-data
+  docker volume inspect sonarqube-logs
+  docker volume inspect sonarqube-extensions
+  mkdir /sonarqube
+  ln -s /var/lib/docker/volumes/sonarqube-conf/_data /sonarqube/conf
+  ln -s /var/lib/docker/volumes/sonarqube-data/_data /sonarqube/data
+  ln -s /var/lib/docker/volumes/sonarqube-logs/_data /sonarqube/logs
+  ln -s /var/lib/docker/volumes/sonarqube-extensions/_data /sonarqube/extensions
+  docker run -d --name c3opssonarqube -p 9000:9000 -p 9092:9092 -v sonarqube-conf:/sonarqube/conf -v sonarqube-data:/sonarqube/data -v sonarqube-logs:/sonarqube/logs -v sonarqube-extensions:/sonarqube/extensions sonarqube
+
+
+  EOF
+
+  tags = {
+    Name        = "SonarQube"
+    Environment = "Dev"
+    ProjectName = "Cloud Binary"
+    ProjectID   = "2024"
+    CreatedBy   = "IaC Terraform"
+  }
+}
+
 # # Resource
 # resource "aws_instance" "efs2" {
 #   ami                    = var.ami

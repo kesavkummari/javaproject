@@ -21,3 +21,6 @@ variable "subnet_id_1a" {
 variable "iam_instance_profile" {
   default = "8amSSMEC2"
 }
+variable "sonar_instance_type" {
+  default = "t2.medium"
+}
