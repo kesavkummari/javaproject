@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+                checkout scm // Use the Jenkins SCM configuration
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+                // Example build command (adjust for your build system)
+                sh 'make build' 
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Example test command
+                sh 'make test' 
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main' // Only deploy on a specific branch
+            }
+            steps {
+                echo 'Deploying the project...'
+                // Example deployment command
+                sh 'make deploy' 
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+            // Additional actions on success (e.g., notifications)
+        }
+        failure {
+            echo 'Pipeline failed!'
+            // Additional actions on failure (e.g., alerts, cleanup)
+        }
+    }
+}

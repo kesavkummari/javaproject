@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage('Init') {
+            steps {
+                'terraform init'
+            }
+        }
+        stage('Format') {
+            steps {
+                'terraform fmt'
+            }
+        }
+        stage('Validate') {
+            steps {
+                'terraform validate'
+            }
+        }
+        stage('Refresh') {
+            steps {
+                'terraform refresh'
+            }
+        }
+        stage('Plan') {
+            steps {
+                'terraform plan'
+            }
+        }
+        stage('Apply') {
+            steps {
+                'terraform apply -auto-approve'
+            }
+        }
+    }
+}
