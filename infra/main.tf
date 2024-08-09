@@ -231,6 +231,39 @@ resource "aws_instance" "tomcat" {
 }
 
 
+# Resource
+resource "aws_instance" "docker" {
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = var.subnet_id_1a
+  vpc_security_group_ids = ["sg-0a3fe1b73a2b3e0d2"]
+  iam_instance_profile   = var.iam_instance_profile
+  #user_data              = file("/Users/ck/repos/iac-terraform/iac/web.sh")
+  user_data = <<-EOF
+  #!/bin/bash
+  hostnamectl set-hostname "docker.cloudbinary.io"
+  echo "`hostname -I | awk '{ print $1}'` `hostname`" >> /etc/hosts 
+  sudo apt-get update 
+  sudo apt-get install git curl unzip tree wget -y 
+  sudo apt-get install docker.io -y 
+  sudo usermod -aG docker ubuntu
+  sudo chmod 777 /var/run/docker.sock
+  sudo systemctl enable docker
+  sudo systemctl restart docker
+
+  EOF
+
+  tags = {
+    Name        = "docker"
+    Environment = "Dev"
+    ProjectName = "Cloud Binary"
+    ProjectID   = "2024"
+    CreatedBy   = "IaC Terraform"
+  }
+}
+
+
 # # Resource
 # resource "aws_instance" "efs2" {
 #   ami                    = var.ami
