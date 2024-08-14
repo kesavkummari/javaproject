@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=c3ops
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=redhat@123
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:80
+    volumes:
+      - .:/code/
+    ports:
+      - "80:80"
+    environment:
+      - POSTGRES_DB=c3ops
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=redhat@123
+    depends_on:
+      - db
