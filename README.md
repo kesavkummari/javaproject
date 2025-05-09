@@ -36,3 +36,6 @@ terraform init ---> .terraform --> No need to push to online
 >>>>>>> dev
 
 
+
+mvn clean verify sonar:sonar 
+
