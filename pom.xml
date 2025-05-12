@@ -2,9 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aws.codestar.projecttemplates</groupId>
-    <artifactId>cloudbinary</artifactId>
-    <version>3.6.6</version>
-    <!-- <version>1.1.0-snapshot</version> -->
+    <artifactId>digitaladds</artifactId>
+    <!-- <version>3.6.6</version> -->
+    <version>1.1.0-snapshot</version>
     <packaging>war</packaging>
     <name>Sample Spring MVC Application Using AWS CodeStar</name>
 
@@ -14,7 +14,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
-        <sonar.host.url>http://40.192.99.23:9000</sonar.host.url>
+        <sonar.host.url>http://18.61.161.189:9000</sonar.host.url>
         <sonar.organization>cloudbinary-angular</sonar.organization>
         <sonar.projectKey>cloudbinary-angular</sonar.projectKey>
         <sonar.login>sqp_f149c60807237c5e4ae9946e35aa155db8eaa11a</sonar.login>       
@@ -25,14 +25,14 @@
 
         <repository>
             <id>release</id>
-            <name>libs-release-local</name>
-            <url>http://44.222.202.232:8082/artifactory/libs-release-local/</url>
+            <name>libs-release-local/</name>
+            <url>http://18.61.74.156:8082/artifactory/libs-release-local/</url>
         </repository>
     
         <snapshotRepository>
             <id>snapshots</id>
-            <name>libs-snapshot-local</name>
-            <url>http://44.222.202.232:8082/artifactory/libs-snapshot-local/</url>
+            <name>libs-snapshot-local/</name>
+            <url>http://18.61.74.156:8082/artifactory/libs-snapshot-local/</url>
         </snapshotRepository>
     
     </distributionManagement>
@@ -127,6 +127,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <finalName>cloudbinary</finalName>
+        <finalName>digitaladds</finalName>
     </build>
 </project>
