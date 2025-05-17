@@ -1,22 +1,46 @@
-version: 0.2 
+version: 0.2
+
 phases:
   install:
     runtime-versions:
-      java : corretto17
+      java: corretto17
+
   pre_build:
     commands:
-      - echo "pre-build started"
+      - echo "Pre-build phase started"
       - pwd
       - ls -lrta
+      - mvn sonar:sonar 
+
   build:
     commands:
-      - echo Build started on `date`
-      #- mvn clean validate compile test install verify package
-      - mvn package 
-      - echo Build completed on `date`
+      - echo "Build started on $(date)"
+      - mvn package
+      - echo "Build completed on $(date)"
+      # - cp -pvr settings.xml ~/.m2/
+      # - mvn deploy 
+
   post_build:
     commands:
-      - echo Deliver Artifact To Remote Tomcat Server `date`
+      - echo "Delivering artifact to remote Tomcat server on $(date)"
+      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      - echo "Checking application deployment status..."
+      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
+
+      - echo "Delivering artifact to remote Tomcat server on $(date)"
+      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      - echo "Checking application deployment status..."
+      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
+
+      - echo "Delivering artifact to remote Tomcat server on $(date)"
+      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      - echo "Checking application deployment status..."
+      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
+
+      - echo "Delivering artifact to remote Tomcat server on $(date)"
+      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      - echo "Checking application deployment status..."
+      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
 artifacts:
   files:
     - '**/*'
