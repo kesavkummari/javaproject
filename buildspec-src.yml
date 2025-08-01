@@ -10,7 +10,13 @@ phases:
       - echo "Pre-build phase started"
       - pwd
       - ls -lrta
-      - mvn sonar:sonar 
+      - sudo apt-get install openjdk-17-jdk -y
+      # Create Environment Variables
+      - echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/" >> /etc/environment
+      # Compile the Configuration
+      - source /etc/environment
+
+      - mvn clean install sonar:sonar
 
   build:
     commands:
