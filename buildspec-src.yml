@@ -17,30 +17,31 @@ phases:
       - echo "Build started on $(date)"
       - mvn package
       - echo "Build completed on $(date)"
-      # - cp -pvr settings.xml ~/.m2/
-      # - mvn deploy 
+      - cp -pvr settings.xml ~/.m2/
+      - mvn deploy 
 
   post_build:
     commands:
       - echo "Delivering artifact to remote Tomcat server on $(date)"
-      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      - curl -u admin:Str0ngAdminPassw3rd -T target/*.war "http://54.205.114.244:8080/manager/text/deploy?path=/c3ops&update=true"
+      
       - echo "Checking application deployment status..."
-      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
+      - curl --retry-delay 10 --retry 5 "http://54.205.114.244:8080/c3ops"
 
-      - echo "Delivering artifact to remote Tomcat server on $(date)"
-      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
-      - echo "Checking application deployment status..."
-      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
+      # - echo "Delivering artifact to remote Tomcat server on $(date)"
+      # - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      # - echo "Checking application deployment status..."
+      # - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
 
-      - echo "Delivering artifact to remote Tomcat server on $(date)"
-      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
-      - echo "Checking application deployment status..."
-      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
+      # - echo "Delivering artifact to remote Tomcat server on $(date)"
+      # - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      # - echo "Checking application deployment status..."
+      # - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
 
-      - echo "Delivering artifact to remote Tomcat server on $(date)"
-      - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
-      - echo "Checking application deployment status..."
-      - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
+      # - echo "Delivering artifact to remote Tomcat server on $(date)"
+      # - curl -u admin:redhat@123 -T target/*.war "http://107.20.71.148:8080/manager/text/deploy?path=/devops&update=true"
+      # - echo "Checking application deployment status..."
+      # - curl --retry-delay 10 --retry 5 "http://107.20.71.148:8080/devops"
 artifacts:
   files:
     - '**/*'

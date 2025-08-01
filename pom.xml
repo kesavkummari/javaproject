@@ -14,28 +14,27 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
-        <!-- <sonar.host.url>http://54.235.42.173:9000</sonar.host.url>
-        <sonar.organization>c3ops-java-project2024</sonar.organization>
-        <sonar.projectKey>c3ops-java-project2024</sonar.projectKey>
-        <sonar.login>sqp_cdf84ccf5529bb07a3de532a46c258d035b6809a</sonar.login>        -->
-
+        <sonar.host.url>http://98.82.8.44:9000</sonar.host.url>
+        <sonar.organization>c3ops_java_project</sonar.organization>
+        <sonar.projectKey>c3ops_java_project</sonar.projectKey>
+        <sonar.login>sqp_a97af6604bb0b048b1578316e36fffe7729435cc</sonar.login>
     </properties>
 
-    <!-- <distributionManagement>
+    <distributionManagement>
 
         <repository>
             <id>release</id>
-            <name>libs-release-local</name>
-            <url>http://44.222.202.232:8082/artifactory/libs-release-local/</url>
+            <name>d4516a5946af-releases</name>
+            <url>http://98.82.8.44:8081/artifactory/libs-release-local</url>
         </repository>
     
         <snapshotRepository>
             <id>snapshots</id>
-            <name>libs-snapshot-local</name>
-            <url>http://44.222.202.232:8082/artifactory/libs-snapshot-local/</url>
+            <name>d4516a5946af-snapshots</name>
+            <url>http://98.82.8.44:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
     
-    </distributionManagement> -->
+    </distributionManagement>
 
     <dependencies>
         <dependency>

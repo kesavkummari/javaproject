@@ -4,12 +4,12 @@
   <servers>
     <server>
       <username>admin</username>
-      <password>Redhat@123</password>
+      <password>Redhat@123456789</password>
       <id>release</id>
     </server>
     <server>
       <username>admin</username>
-      <password>Redhat@123</password>
+      <password>Redhat@123456789</password>
       <id>snapshots</id>
     </server>
   </servers>
@@ -21,14 +21,14 @@
             <enabled>true</enabled>
           </snapshots>
           <id>release</id>
-          <name>libs-release-local</name>
-          <url>http://44.222.202.232:8082/artifactory/libs-release-local/</url>
+          <name>d4516a5946af-releases</name>
+          <url>http://98.82.8.44:8081/artifactory/libs-release-local</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
-          <name>libs-snapshot-local</name>
-          <url>http://44.222.202.232:8082/artifactory/libs-snapshot-local/</url>
+          <name>d4516a5946af-snapshots</name>
+          <url>http://98.82.8.44:8081/artifactory/libs-snapshot-local</url>
         </repository>
       </repositories>
       <id>default</id>

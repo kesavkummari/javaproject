@@ -1,7 +1,6 @@
 # javaproject
 To Store Raw Code &amp; To Create CI/CD Pipeline
 
-<<<<<<< HEAD
 
 
 javaproject name of the repo:
@@ -29,10 +28,10 @@ git merge dev
 
 New Developer : 96f0456bcdb39b95724373f3a82c755634463f42
 
-=======
-Build LifeCycles - terraform
-
-terraform init ---> .terraform --> No need to push to online
->>>>>>> dev
 
 
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=c3ops_java_project \
+  -Dsonar.projectName='c3ops_java_project' \
+  -Dsonar.host.url=http://98.82.8.44:9000 \
+  -Dsonar.token=sqp_a97af6604bb0b048b1578316e36fffe7729435cc
